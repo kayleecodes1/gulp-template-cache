@@ -1,9 +1,13 @@
 {
   "name": "gulp-template-cache",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "A Gulp plugin that converts HTML files into JavaScript strings that can be accessed through a global variable.",
   "author": "Kyle Maguire <kylepixel@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kylepixel/gulp-template-cache.git"
+  },
+  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "path": "^0.12.7",

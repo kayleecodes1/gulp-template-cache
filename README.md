@@ -1,4 +1,4 @@
-## Gulp Template Cache
+# Gulp Template Cache
 
 This is a [`Gulp`](http://gulpjs.com) plugin that converts HTML files into JavaScript strings that can then be quickly accessed through a global variable.
 
