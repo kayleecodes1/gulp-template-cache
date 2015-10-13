@@ -18,7 +18,7 @@ module.exports = function templateCache(options) {
     options.nameFunction = options.nameFunction || nameFunction_default;
 
     var js = '(function() {\n';
-    js += '    window[ ' + options.globalVariable + ' ] = {};\n';
+    js += '    window[ \'' + options.globalVariable.replace(/'/g, "\\'") + '\' ] = {};\n';
 
     return through.obj(
         function transform(file, e, done) {
@@ -30,7 +30,6 @@ module.exports = function templateCache(options) {
         function flush(done) {
             js += '}());';
 
-            //TODO: window[ options.globalVariable ] = ...;
             this.push(new File({
                 path: options.fileName,
                 contents: new Buffer(js)
@@ -46,6 +45,6 @@ function nameFunction_default(templatePath) {
 
 function convertHtml(view, path, options) {
     var wrapped = "'" + view.replace(/'/g, "\\'").replace(/\n/g, '\\n') + "'";
-    return 'window[ ' + options.globalVariable + ' ][ \'' +
+    return 'window[ \'' + options.globalVariable.replace(/'/g, "\\'") + '\' ][ \'' +
         options.nameFunction(path).replace(/'/g, "\\'") + '\' ] = ' + wrapped + ';\n';
 }
