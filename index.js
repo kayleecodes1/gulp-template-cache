@@ -23,7 +23,7 @@ module.exports = function templateCache(options) {
     return through.obj(
         function transform(file, e, done) {
             if (file.isBuffer()) {
-                js += '    ' + convertHtml(file.contents.toString(), file.relative);
+                js += '    ' + convertHtml(file.contents.toString(), file.relative, options);
             }
             done(null);
         },
@@ -44,8 +44,8 @@ function nameFunction_default(templatePath) {
     return templatePath;
 }
 
-function convertHtml(view, path, nameFunction) {
+function convertHtml(view, path, options) {
     var wrapped = "'" + view.replace(/'/g, "\\'").replace(/\n/g, '\\n') + "'";
     return 'window[ ' + options.globalVariable + ' ][ \'' +
-        nameFunction(path).replace(/'/g, "\\'") + '\' ] = ' + wrapped + ';\n';
+        options.nameFunction(path).replace(/'/g, "\\'") + '\' ] = ' + wrapped + ';\n';
 }
