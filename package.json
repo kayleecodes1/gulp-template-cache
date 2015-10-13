@@ -1,0 +1,13 @@
+{
+  "name": "gulp-template-cache",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Kyle Maguire <kylepixel@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "path": "^0.12.7",
+    "through2": "^2.0.0",
+    "vinyl": "^1.0.0"
+  }
+}
